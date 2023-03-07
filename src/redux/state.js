@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+    name: "Name Character",
     characteristic: {
         power: 0,
         agility: 0,
