@@ -1,0 +1,39 @@
+.progressbar__container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px;
+    width: 100%;
+}
+
+.progressbar__container p {
+    color: #fff;
+    font-size: 22px;
+    min-width: 100px;
+    letter-spacing: 0.1rem;
+}
+
+.progressbar__field {
+    position: relative;
+    width: 70%;
+    min-width: 200px;
+    height: 40px;
+    border: 1px solid rgba(233, 233, 233, 1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.progressbar__progress {
+    height: 100%;
+    background-color: #92f232;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+}
+
+.progressbar__field span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -21,112 +21,16 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 35px;
     align-items: center;
+    gap: 35px;
     flex: 1;
     padding: 25px;
 }
 
-.features__left_name {
-    display: flex;
-    gap: 10px;
-    max-width: 500px;
-    height: 45px;
-    padding: 13px 20px;
-    border-radius: 15px;
-    background: rgba(217, 217, 217, 0.2);
-}
-
-.features__left_name input {
-    width: fit-content;
-    color: #fff;
-    font-size: 16px;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    outline: none;
-    border: none;
-    background: none;
-}
-.features__left_name input::placeholder {
-    text-align: center;
-    color: black;
-}
-
-.features__left_rename {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
-}
-
-.rename__icon {
-    color: rgba(89, 255, 47, 1);
-}
-
-.features__left_character {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 50px;
-    width: 70%;
-    height: 70%;
-    border-radius: 20px;
-    padding: 30px;
-    background: rgba(217, 217, 217, 0.2);
-}
-
-.character__inventary_row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.inventary__item {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75px;
-    height: 75px;
-    background: #343434;
-    border: 1px solid #c5c5c5;
-    border-radius: 10px;
-}
-
-.imgItem {
-    width: 60%;
-    height: 60%;
-    object-fit: cover;
-}
-
-.container__imgCraracter {
-    position: absolute;
-    top: 65%;
-    left: 55%;
-    max-width: 275px;
-    transform: translate(-50%, -50%);
-}
-
-.imgCharacter {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.character__shadow {
-    position: absolute;
-    bottom: 10px;
-    left: -10px;
-    border-radius: 50%;
-    width: 100%;
-    height: 10px;
-    background: #000000;
-    filter: blur(12px);
-}
-
 .features__right {
     flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
 }

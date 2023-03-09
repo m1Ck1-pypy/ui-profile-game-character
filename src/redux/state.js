@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    name: "Name Character",
+    name: "Yennifer",
+    level: 1,
     characteristic: {
         power: 0,
         agility: 0,
