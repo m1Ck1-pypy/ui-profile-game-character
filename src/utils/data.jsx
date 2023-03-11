@@ -5,14 +5,14 @@ import sword from '../assets/images/sword.png';
 import pants from '../assets/images/pants.png';
 import boots from '../assets/images/boots.png';
 
-import powerIcom from '../assets/images/powerIcon.png';
-import runIcon from '../assets/images/runIcon.png';
-import brainIcon from '../assets/images/brainIcon.png';
-import speakIcon from '../assets/images/speakIcon.png';
+import powerIcom from '../assets/images/powerIcon.svg';
+import runIcon from '../assets/images/runIcon.svg';
+import brainIcon from '../assets/images/brainIcon.svg';
+import speakIcon from '../assets/images/speakIcon.svg';
 
-import hearthIcon from '../assets/images/hearthIcon.png';
-import rabbitIcon from '../assets/images/rabbitIcon.png';
-import energyIcon from '../assets/images/energyIcon.png';
+import hearthIcon from '../assets/images/hearthIcon.svg';
+import rabbitIcon from '../assets/images/rabbitIcon.svg';
+import energyIcon from '../assets/images/energyIcon.svg';
 
 export const inventoryItems = [
     {
@@ -68,4 +68,28 @@ export const additionalParams = [
         key: "energy",
         icon: energyIcon
     },
-]
+];
+
+export const partition_list = [
+    { id: 0, title: "Характеристики" },
+    { id: 1, title: "Способности" },
+];
+
+export const variants = {
+    initial: {
+        opacity: 0,
+        x: 50
+    },
+    animate: {
+        opacity: 1,
+        x: 0
+    },
+    exit: {
+        opacity: 0,
+        x: -50
+    },
+    transition: {
+        duration: 0.3,
+        ease: 'linear'
+    }
+};

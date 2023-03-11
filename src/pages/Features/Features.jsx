@@ -1,32 +1,28 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { incrementParams, decrementParams, takeDamage } from '../../redux/state';
-import { CharacterInventary, FieldCharacterName, ProgressBar, ParamsCard } from '../../components';
-import { basicParams, additionalParams } from '../../utils/data';
+import { CharacterInventary, FieldCharacterName, ProgressBar, ParamsCard, SkillsCard } from '../../components';
+import { basicParams, additionalParams, partition_list, variants } from '../../utils/data';
 import swordImg from '../../assets/images/swordBtn.png';
 
 import styles from './Features.module.css';
 
-
-const variants = {
-    initial: {
-        opacity: 0,
-        x: 50
-    },
-    animate: {
-        opacity: 1,
-        x: 0
-    },
-    exit: {
-        opacity: 0,
-        x: -50
-    },
-    transition: {
-        duration: 0.3,
-        ease: 'linear'
-    }
+const Partition = ({ title, id, setActive, active }) => {
+    return (
+        <>
+            {active === id ? (
+                <p className={styles.activePage} onClick={() => setActive(id)} >
+                    {title}
+                </p>
+            ) : (
+                <p className={styles.noactivePage} onClick={() => setActive(id)} >
+                    {title}
+                </p>
+            )}
+        </>
+    )
 };
 
 const Features = () => {
@@ -35,8 +31,9 @@ const Features = () => {
     const level = useSelector((state) => state.global.level);
     const characteristic = useSelector((state) => state.global.basicCharacteristics);
     const additional = useSelector((state) => state.global.additionalCharacters());
+    const skills = useSelector((state) => state.global.skillsCharacter);
 
-    const [pageActive, setPageActive] = useState(true);
+    const [active, setActive] = useState(1);
 
     const upgradeParams = (key) => {
         return () => dispatch(incrementParams(key))
@@ -60,10 +57,11 @@ const Features = () => {
                 <div className={styles.features__right}>
                     <ProgressBar level={level} />
                     <div className={styles.features__partition}>
-                        <p onClick={() => setPageActive(true)}>Характеристики</p>
-                        <p onClick={() => setPageActive(false)}>Способности</p>
+                        {partition_list && partition_list.map((item, index) => (
+                            <Partition key={index} title={item.title} id={index} active={active} setActive={setActive} />
+                        ))}
                     </div>
-                    {pageActive ? (
+                    {active === 0 ? (
                         <motion.div {...variants} className={styles.features__cards}>
                             <ParamsCard
                                 title="Основные"
@@ -79,13 +77,14 @@ const Features = () => {
                             />
                         </motion.div>
                     ) : (
-                        <div>123</div>
+                        <motion.div {...variants} className={styles.features__cards}>
+                            <SkillsCard skills={skills} characteristic={characteristic} />
+                        </motion.div>
                     )}
                 </div>
             </div>
-
         </div>
     )
-}
+};
 
-export default Features
+export default Features;

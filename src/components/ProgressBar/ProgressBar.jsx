@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import styles from './ProgressBar.module.css';
 
 const ProgressBar = ({ level }) => {
-    const [progress, setProgress] = useState(21);
+    const [progress, setProgress] = useState(31);
 
     useEffect(() => {
         if (progress >= 100) {

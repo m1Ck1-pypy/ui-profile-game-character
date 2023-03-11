@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    name: "Yennifer",
+    name: "Ciri",
     level: 1,
     basicCharacteristics: {
         power: 0,
@@ -28,6 +28,51 @@ const initialState = {
 
         return additionalParams;
     },
+    skillsCharacter: {
+        power: [{ title: "Атака", level: 0 }],
+        agility: [
+            {
+                title: "Стелс",
+                level: 0,
+            },
+            {
+                title: "Стрельба из лука",
+                level: 0,
+            },
+        ],
+        intelligence: [
+            {
+                title: "Обучаемость",
+                level: 0,
+            },
+            {
+                title: "Выжывание",
+                level: 0,
+            },
+            {
+                title: "Медицина",
+                level: 0,
+            },
+        ],
+        charisma: [
+            {
+                title: "Запугивание",
+                level: 0,
+            },
+            {
+                title: "Проницательность",
+                level: 0,
+            },
+            {
+                title: "Внешний вид",
+                level: 0,
+            },
+            {
+                title: "Манипулирование",
+                level: 0,
+            },
+        ],
+    },
 };
 
 export const globalSlice = createSlice({
@@ -51,13 +96,14 @@ export const globalSlice = createSlice({
             if (state.additionalCharacters().lifeforce > 0) {
                 state.takeDamage += 1;
             }
-            if (state.additionalCharacters().lifeforce < 0) {
+            if (state.additionalCharacters().lifeforce <= 0) {
             }
         },
+        levelUpSkill: (state, key) => {},
     },
 });
 
-export const { rename, incrementParams, decrementParams, takeDamage } =
+export const { rename, incrementParams, decrementParams, takeDamage, levelUpSkill } =
     globalSlice.actions;
 
 export default globalSlice.reducer;

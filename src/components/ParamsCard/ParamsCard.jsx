@@ -3,9 +3,7 @@ import { FiMinus, FiPlus } from 'react-icons/fi';
 
 import styles from './Params.module.css';
 
-
 const ParamsCard = ({ title, params, characteristic, incrementParams, decrementParams, additional }) => {
-
     return (
         <div className={styles.card__container}>
             <p className={styles.card__title}>{title}</p>
@@ -18,7 +16,7 @@ const ParamsCard = ({ title, params, characteristic, incrementParams, decrementP
                         </div>
                         <div className={styles.item__count}>
                             {characteristic ? (
-                                <div className={`${styles.item__btn} plus`} onClick={incrementParams(item.key)}>
+                                <div className={`${styles.item__btn} ${styles.green__btn}`} onClick={incrementParams(item.key)}>
                                     <FiPlus />
                                 </div>
                             ) : (
@@ -34,7 +32,7 @@ const ParamsCard = ({ title, params, characteristic, incrementParams, decrementP
                             )}
 
                             {characteristic ? (
-                                <div className={`${styles.item__btn} minus`} onClick={decrementParams(item.key)}>
+                                <div className={`${styles.item__btn} ${styles.red__btn}`} onClick={decrementParams(item.key)}>
                                     <FiMinus />
                                 </div>
                             ) : (

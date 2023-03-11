@@ -74,10 +74,22 @@
     cursor: pointer;
 }
 
-.item__btn:hover {
+.green__btn {
     color: #4ad862;
     background: hsla(130, 65%, 57%, 0.4);
-    transform: scale(1.1);
+}
+
+.red__btn {
+    color: #d84a4a;
+    background: hsla(0, 65%, 57%, 0.4);
+}
+
+.item__btn:hover {
+    transform: scale(1.15);
+}
+
+.item__btn:active {
+    transform: scale(0.9);
 }
 
 .item__count .item__value {
