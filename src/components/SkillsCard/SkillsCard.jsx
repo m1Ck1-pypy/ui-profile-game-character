@@ -51,9 +51,13 @@ const SkillsCard = ({ skills, characteristic }) => {
                                 <span style={{ color: titleLevel(item.level, 1) }}>{titleLevel(item.level)}</span>
                             </div>
                             <div className={styles.item__arrowUp} onClick={handleLevelUp(selectSkill, item.title)}>
-                                {(characteristic[selectSkill] > 0 && characteristic[selectSkill] < 6) && characteristic[selectSkill] > item.level ? (
-                                    <FiArrowUp className={styles.arrow} />
-                                ) : null}
+                                {
+                                    ((characteristic[selectSkill] === item.level) || (item.level >= 5)) ? (
+                                        null
+                                    ) : (
+                                        <FiArrowUp className={styles.arrow} />
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

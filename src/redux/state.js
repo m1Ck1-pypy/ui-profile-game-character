@@ -5,7 +5,7 @@ const initialState = {
     level: 1,
     basicCharacteristics: {
         power: 5,
-        agility: 4,
+        agility: 6,
         intelligence: 2,
         charisma: 3,
     },
@@ -50,7 +50,9 @@ export const globalSlice = createSlice({
             state.name = key.payload;
         },
         incrementParams: (state, key) => {
-            state.basicCharacteristics[key.payload] += 1;
+            if (state.basicCharacteristics[key.payload] < 99) {
+                state.basicCharacteristics[key.payload] += 1;
+            }
         },
         decrementParams: (state, key) => {
             if (state.basicCharacteristics[key.payload] === 0) {
