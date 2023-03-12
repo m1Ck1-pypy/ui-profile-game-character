@@ -51,7 +51,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     padding: 15px 40px;
     border: 1px solid rgba(233, 233, 233, 1);
@@ -62,29 +61,45 @@
 }
 
 .item__title {
-    min-width: 220px;
+    width: 100%;
+    min-width: 200px;
 }
 
 .item__level {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .item__levelValue {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    font-size: 14px;
 }
 
 .item__arrowUp {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 40px;
     cursor: pointer;
-    margin-left: 50px;
-}
-
-.arrow {
     font-size: 2rem;
     color: hsl(101, 100%, 38%);
+    transition: all 0.5s ease-in-out;
+}
+
+.arrow:hover {
+    animation: animate 0.85s infinite ease-in-out;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(5px);
+    }
 }

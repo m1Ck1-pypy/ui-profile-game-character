@@ -33,7 +33,7 @@ const Features = () => {
     const additional = useSelector((state) => state.global.additionalCharacters());
     const skills = useSelector((state) => state.global.skillsCharacter);
 
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(0);
 
     const upgradeParams = (key) => {
         return () => dispatch(incrementParams(key))

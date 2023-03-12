@@ -4,10 +4,10 @@ const initialState = {
     name: "Ciri",
     level: 1,
     basicCharacteristics: {
-        power: 0,
-        agility: 0,
-        intelligence: 0,
-        charisma: 0,
+        power: 5,
+        agility: 4,
+        intelligence: 2,
+        charisma: 3,
     },
     takeDamage: 0,
     additionalCharacters: function () {
@@ -28,51 +28,18 @@ const initialState = {
 
         return additionalParams;
     },
-    skillsCharacter: {
-        power: [{ title: "Атака", level: 0 }],
-        agility: [
-            {
-                title: "Стелс",
-                level: 0,
-            },
-            {
-                title: "Стрельба из лука",
-                level: 0,
-            },
-        ],
-        intelligence: [
-            {
-                title: "Обучаемость",
-                level: 0,
-            },
-            {
-                title: "Выжывание",
-                level: 0,
-            },
-            {
-                title: "Медицина",
-                level: 0,
-            },
-        ],
-        charisma: [
-            {
-                title: "Запугивание",
-                level: 0,
-            },
-            {
-                title: "Проницательность",
-                level: 0,
-            },
-            {
-                title: "Внешний вид",
-                level: 0,
-            },
-            {
-                title: "Манипулирование",
-                level: 0,
-            },
-        ],
-    },
+    skillsCharacter: [
+        { key: "power", title: "Атака", level: 0 },
+        { key: "agility", title: "Стелс", level: 0 },
+        { key: "agility", title: "Стрельба из лука", level: 0 },
+        { key: "intelligence", title: "Обучаемость", level: 0 },
+        { key: "intelligence", title: "Выжывание", level: 0 },
+        { key: "intelligence", title: "Медицина", level: 0 },
+        { key: "charisma", title: "Запугивание", level: 0 },
+        { key: "charisma", title: "Проницательность", level: 0 },
+        { key: "charisma", title: "Внешний вид", level: 0 },
+        { key: "charisma", title: "Манипулирование", level: 0 },
+    ],
 };
 
 export const globalSlice = createSlice({
@@ -99,7 +66,17 @@ export const globalSlice = createSlice({
             if (state.additionalCharacters().lifeforce <= 0) {
             }
         },
-        levelUpSkill: (state, key) => {},
+        levelUpSkill: (state, key) => {
+            const skill = state.skillsCharacter.find(
+                (item) => item.key === key.payload[0] && item.title === key.payload[1]
+            );
+
+            state.basicCharacteristics[key.payload[0]];
+
+            if (state.basicCharacteristics[key.payload[0]] > skill.level) {
+                skill.level += 1;
+            }
+        },
     },
 });
 

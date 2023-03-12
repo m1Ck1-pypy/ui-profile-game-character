@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import styles from './Home.module.css';
+import background from '../../assets/video/background.mp4';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Home = () => {
 
     return (
         <div className={styles.home__container}>
+            <video src={background} autoPlay muted loop />
             <button type='button' className={styles.home__btn} onClick={() => navigate('/features')}>
                 Играть
             </button>

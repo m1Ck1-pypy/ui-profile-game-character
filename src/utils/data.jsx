@@ -93,3 +93,36 @@ export const variants = {
         ease: 'linear'
     }
 };
+
+export const levelOptions = [
+    {
+        level: 0,
+        title: "Нетренированный",
+        color: "#fff",
+    },
+    {
+        level: 1,
+        title: "Новичок",
+        color: "#c9cc00",
+    },
+    {
+        level: 2,
+        title: "Ученик",
+        color: "#00b81f",
+    },
+    {
+        level: 3,
+        title: "Адепт",
+        color: "#005bd1",
+    },
+    {
+        level: 4,
+        title: "Эксперт",
+        color: "#ff2e2e",
+    },
+    {
+        level: 5,
+        title: "Мастер",
+        color: "#9600fa",
+    }
+]

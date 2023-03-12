@@ -1,14 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FiArrowUp } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
 
-import { basicParams } from '../../utils/data';
+import { levelUpSkill } from '../../redux/state';
+import { basicParams, levelOptions } from '../../utils/data';
 import styles from './SkillsCard.module.css';
 
-const SkillsCard = ({ skills, characteristic }) => {
-    console.log("🚀 characteristic:", characteristic)
+const titleLevel = (level, color = 0) => {
+    const levelObj = levelOptions.find((item) => item.level === level)
+    if (color) {
+        return levelObj.color
+    } else {
+        return levelObj.title
+    }
+}
 
+const SkillsCard = ({ skills, characteristic }) => {
+    const dispatch = useDispatch();
 
     const [selectSkill, setSelectSkill] = useState(basicParams[0].key);
+
+    const handleLevelUp = (skills, title) => {
+        return () => dispatch(levelUpSkill([skills, title]));
+    }
+
+    // console.log(`🚀 characteristic[${selectSkill}]:`, characteristic[selectSkill])
 
     return (
         <div className={styles.skills__container}>
@@ -25,27 +41,27 @@ const SkillsCard = ({ skills, characteristic }) => {
             </div>
 
             <div className={styles.skills__list}>
-                {selectSkill && skills[selectSkill].map((item, index) => (
+                {selectSkill && skills.map((item, index) => item.key === selectSkill && (
                     <div key={index} className={styles.skills__item}>
                         <div className={styles.item__title}>
                             <p>{item.title}</p>
                         </div>
                         <div className={styles.item__level}>
                             <div className={styles.item__levelValue}>
-                                <p>Уровень: </p>
-                                <span>{item.level}</span>
+                                <span style={{ color: titleLevel(item.level, 1) }}>{titleLevel(item.level)}</span>
                             </div>
-                            <div className={styles.item__arrowUp}>
-                                {characteristic[selectSkill] >= item.level && (
+                            <div className={styles.item__arrowUp} onClick={handleLevelUp(selectSkill, item.title)}>
+                                {(characteristic[selectSkill] > 0 && characteristic[selectSkill] < 6) && characteristic[selectSkill] > item.level ? (
                                     <FiArrowUp className={styles.arrow} />
-                                )}
+                                ) : null}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     )
 }
+
 
 export default SkillsCard;

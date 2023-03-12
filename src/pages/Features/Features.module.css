@@ -5,6 +5,7 @@
     height: 100vh;
     padding: 50px;
     user-select: none;
+    transition: all 1s ease-in-out;
 }
 
 .features__container {
@@ -13,7 +14,7 @@
     width: 100%;
     min-height: 100%;
     height: auto;
-    background-color: rgba(19, 19, 19, 0.2);
+    background-color: rgba(19, 19, 19, 0.75);
     border-radius: 30px;
     padding: 60px;
     flex-wrap: wrap;
