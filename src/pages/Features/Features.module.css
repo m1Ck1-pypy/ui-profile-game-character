@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     width: 100%;
-    height: 100vh;
     padding: 50px;
     user-select: none;
     transition: all 1s ease-in-out;
@@ -12,29 +11,55 @@
     position: relative;
     display: flex;
     width: 100%;
-    min-height: 100%;
-    height: auto;
+    height: 100%;
+    min-height: 89vh;
     background-color: rgba(19, 19, 19, 0.75);
     border-radius: 30px;
     padding: 60px;
     flex-wrap: wrap;
 }
 
+.features__left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    flex: 1;
+    padding: 25px;
+}
+
+.features__right {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.features_progressbar {
+    position: relative;
+    display: flex;
+    height: auto;
+}
+
 .btn__battle {
-    position: absolute;
-    top: 50px;
-    right: 50px;
     width: 75px;
     height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
     border-radius: 50%;
     background: #fff;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
     user-select: none;
 }
+.btn__battle img {
+    width: 90%;
+}
+
 .btn__battle:active {
     transform: scale(0.9);
 }
@@ -56,28 +81,11 @@
     }
 }
 
-.features__left {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
-    flex: 1;
-    padding: 25px;
-}
-
-.features__right {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-}
-
 .features__partition {
     position: relative;
     display: flex;
     width: 100%;
+    gap: 25px;
     justify-content: space-evenly;
     align-items: center;
     padding: 0 30px;
@@ -115,16 +123,57 @@
 }
 
 .features__cards {
-    padding: 0 30px;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.6rem;
     user-select: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1255px) {
+    .features__container {
+        height: 100%;
+    }
+    .features__right {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .features__wrapper {
+        padding: 20px;
+    }
+
+    .features__container {
+        padding: 30px;
+    }
+    .features__partition p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 580px) {
+    .features__wrapper {
+        padding: 5px;
+    }
+    .features__container {
+        padding: 15px;
+    }
+    .features__partition {
+        padding: 0;
+    }
+    .features__partition p {
+        font-size: 12px;
+    }
     .features__left {
-        margin-bottom: 100px;
+        padding: 0;
+    }
+    .features__right {
+        margin-top: 60px;
+    }
+    .btn__battle {
+        width: 50px;
+        height: 50px;
     }
 }

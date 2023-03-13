@@ -100,3 +100,28 @@
     font-weight: 500;
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .card__container {
+        width: 100%;
+        padding: 20px;
+    }
+    .card__container .card__title {
+        font-size: 14px;
+    }
+    .item__data p {
+        font-size: 12px;
+    }
+    .card__list {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 580px) {
+    .item__count {
+        margin-right: 0;
+    }
+    .item__count .item__value {
+        font-size: 16px;
+    }
+}

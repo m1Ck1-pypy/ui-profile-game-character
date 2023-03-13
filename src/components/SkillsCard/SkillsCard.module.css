@@ -1,10 +1,11 @@
 .skills__container {
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    transition: all 0.4s ease-in-out;
 }
 
 .skills__param {
@@ -13,6 +14,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 15px;
+    transition: all 0.4s ease-in-out;
 }
 
 .params__box {
@@ -42,9 +44,10 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 40px;
+    padding: 25px;
     background: rgba(217, 217, 217, 0.2);
     border-radius: 15px;
+    transition: all 0.4s ease-in-out;
 }
 
 .skills__item {
@@ -52,17 +55,18 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 15px 40px;
+    padding: 15px 30px;
     border: 1px solid rgba(233, 233, 233, 1);
     border-radius: 15px;
     background-color: #343434;
     color: #fff;
     letter-spacing: 0.1rem;
+    transition: all 0.4s ease-in-out;
 }
 
 .item__title {
-    width: 100%;
-    min-width: 200px;
+    width: 90%;
+    font-size: 14px;
 }
 
 .item__level {
@@ -76,7 +80,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
+    min-width: 150px;
     font-size: 14px;
 }
 
@@ -101,5 +105,26 @@
     }
     100% {
         transform: translateY(5px);
+    }
+}
+
+@media (max-width: 580px) {
+    .skills__container {
+        width: 100%;
+    }
+    .skills__list {
+        padding: 20px;
+    }
+    .skills__item {
+        padding: 10px 15px;
+    }
+    .item__title {
+        font-size: 10px;
+    }
+    .item__levelValue {
+        font-size: 10px;
+    }
+    .item__arrowUp {
+        font-size: 1.3rem;
     }
 }

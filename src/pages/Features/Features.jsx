@@ -52,15 +52,17 @@ const Features = () => {
     return (
         <div className={styles.features__wrapper}>
             <div className={styles.features__container}>
-                <div className={styles.btn__battle} onClick={() => dispatch(takeDamage())}>
-                    <img src={swordImg} alt="attack" />
-                </div>
                 <div className={styles.features__left}>
                     <FieldCharacterName />
                     <CharacterInventary />
                 </div>
                 <div className={styles.features__right}>
-                    <ProgressBar level={level} />
+                    <div className={styles.features_progressbar}>
+                        <ProgressBar level={level} />
+                        <div className={styles.btn__battle} onClick={() => dispatch(takeDamage())}>
+                            <img src={swordImg} alt="attack" />
+                        </div>
+                    </div>
                     <div className={styles.features__partition}>
                         {partition_list && partition_list.map((item, index) => (
                             <Partition key={index} title={item.title} id={index} active={active} setActive={setActive} />
