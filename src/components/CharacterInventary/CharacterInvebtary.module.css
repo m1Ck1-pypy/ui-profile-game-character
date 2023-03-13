@@ -62,14 +62,14 @@
     filter: blur(12px);
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1380px) {
     .features__left_character {
         width: 90%;
         min-width: 450px;
     }
     .container__imgCraracter {
         top: 55%;
-        min-width: 300px;
+        min-width: 250px;
     }
 }
 

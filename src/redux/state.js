@@ -13,10 +13,10 @@ const initialState = {
     name: "Ciri",
     level: 1,
     basicCharacteristics: {
-        power: 5,
-        agility: 6,
-        intelligence: 2,
-        charisma: 3,
+        power: 1,
+        agility: 2,
+        intelligence: 3,
+        charisma: 4,
     },
     takeDamage: 0,
     additionalCharacters: function () {

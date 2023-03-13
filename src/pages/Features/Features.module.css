@@ -17,6 +17,7 @@
     border-radius: 30px;
     padding: 60px;
     flex-wrap: wrap;
+    transition: all 0.5s ease-in-out;
 }
 
 .features__left {
@@ -162,6 +163,8 @@
     }
     .features__partition {
         padding: 0;
+        flex-direction: column;
+        gap: 10px;
     }
     .features__partition p {
         font-size: 12px;

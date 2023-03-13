@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 
 import { incrementParams, decrementParams, takeDamage } from '../../redux/state';
-import { CharacterInventary, FieldCharacterName, ProgressBar, ParamsCard, SkillsCard } from '../../components';
+import { CharacterInventary, FieldCharacterName, ProgressBar, ParamsCard, SkillsCard, ExportData } from '../../components';
 import { basicParams, additionalParams, partition_list, variants } from '../../utils/data';
 import swordImg from '../../assets/images/swordBtn.png';
 
@@ -67,6 +67,7 @@ const Features = () => {
                         {partition_list && partition_list.map((item, index) => (
                             <Partition key={index} title={item.title} id={index} active={active} setActive={setActive} />
                         ))}
+                        <ExportData />
                     </div>
                     {active === 0 ? (
                         <motion.div {...variants} className={styles.features__cards}>
