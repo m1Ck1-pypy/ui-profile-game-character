@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Создание начального хранилища для доступа к параметрам в любои месте
+/* 
+    name - имя персонажа
+    level - уровень персонажа
+    basicCharacteristics - объект с ключами (базовый параметр) и значениями (величина параметра)
+    takeDamage - переменная счетчик для подсчета полученного урона
+    additionalCharacters - метод объекта, где создается объект дополнительных параметров на основе базовых
+    skillsCharacter - массив с объектами, где храняться способности персонажа
+*/
 const initialState = {
     name: "Ciri",
     level: 1,
@@ -13,6 +22,7 @@ const initialState = {
     additionalCharacters: function () {
         let lifeforce = this.basicCharacteristics.power + 3;
 
+        // Если получен уров персонаж теряет -1 жизненной силы
         if (this.takeDamage) {
             lifeforce = this.basicCharacteristics.power + 3 - this.takeDamage;
         }
@@ -42,6 +52,15 @@ const initialState = {
     ],
 };
 
+// Инициализация Redux Toolkit
+// Создание reduser для изменение данных хранящихся в initialState
+/* 
+    rename - переименование персонажа;
+    incrementParams - увеличить базовый параметр на 1 с установленным максимальным значение параметра
+    decrementParams - уменьшение базовый параметр на 1 с проверкой на минимальное значение 0 (не уменьшать < 0)
+    takeDamage - получение урона персонажем (вычетает -1 у дополнительного параметра жизненная сила)
+    levelUpSkill - увеличение уровня способности на 1 при условии что базовый параметр > уровня способности
+*/
 export const globalSlice = createSlice({
     name: "global",
     initialState,
@@ -69,12 +88,14 @@ export const globalSlice = createSlice({
             }
         },
         levelUpSkill: (state, key) => {
+            // key.payload - ["power", "Атака"]
+            // item - объект из массива всех скиллов
+            // Производим поис нужного скилла в массиве по заданному условию
             const skill = state.skillsCharacter.find(
                 (item) => item.key === key.payload[0] && item.title === key.payload[1]
             );
 
-            state.basicCharacteristics[key.payload[0]];
-
+            // При выполнении условия, что базовый параметр строго больше уровня скилла, то увеличиваем уровень скилла
             if (state.basicCharacteristics[key.payload[0]] > skill.level) {
                 skill.level += 1;
             }

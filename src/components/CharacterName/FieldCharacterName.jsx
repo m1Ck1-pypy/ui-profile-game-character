@@ -7,14 +7,17 @@ import { rename } from '../../redux/state';
 
 import styles from './FieldCharacteName.module.css';
 
-
+// КОмпонент изменения имени песонажа
 const FieldCharacterName = () => {
     const dispatch = useDispatch();
 
+    // Получение имени из state
     const nameCharacter = useSelector((state) => state.global.name);
-    const [fieldName, setFieldName] = useState(nameCharacter);
-    const [disabledFieldName, setDisabledFieldName] = useState(true);
 
+    const [fieldName, setFieldName] = useState(nameCharacter); // Хранение и изменение имени
+    const [disabledFieldName, setDisabledFieldName] = useState(true); // Задание атрибута disabled в поле input
+
+    // Отправка имени в state и сохранение его
     const handleClickRename = (key) => {
         dispatch(rename(key));
         setDisabledFieldName(prev => !prev);

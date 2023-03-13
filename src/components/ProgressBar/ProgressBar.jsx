@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 
 import styles from './ProgressBar.module.css';
 
+// Компонент Progressbar для отображения полосы полученного опыта персонажа
 const ProgressBar = ({ level }) => {
+    // Значение по умолчанию
     const [progress, setProgress] = useState(31);
 
+    // При долтижении знвчения 100 счетчим сбрасывается на 0
     useEffect(() => {
         if (progress >= 100) {
             setProgress(0);

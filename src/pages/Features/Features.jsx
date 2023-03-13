@@ -9,6 +9,7 @@ import swordImg from '../../assets/images/swordBtn.png';
 
 import styles from './Features.module.css';
 
+// Компонент для выбора вкладки меню (Характеристики, Способности)
 const Partition = ({ title, id, setActive, active }) => {
     return (
         <>
@@ -25,27 +26,31 @@ const Partition = ({ title, id, setActive, active }) => {
     )
 };
 
+// Компонент страницы с характеристиками персонажа 
 const Features = () => {
     const dispatch = useDispatch();
 
+    // Получение значений из state
     const level = useSelector((state) => state.global.level);
     const characteristic = useSelector((state) => state.global.basicCharacteristics);
     const additional = useSelector((state) => state.global.additionalCharacters());
     const skills = useSelector((state) => state.global.skillsCharacter);
 
+    // Активный пункт меню (по id)
     const [active, setActive] = useState(0);
 
+    // Функция для отправки увеличенного значения в state для его изменения (reduser)
     const upgradeParams = (key) => {
         return () => dispatch(incrementParams(key))
-    }
+    };
 
+    // Функция для отправки уменьшенного значения в state для его изменения (reduser)
     const lowerParams = (key) => {
         return () => dispatch(decrementParams(key))
-    }
+    };
 
     return (
         <div className={styles.features__wrapper}>
-
             <div className={styles.features__container}>
                 <div className={styles.btn__battle} onClick={() => dispatch(takeDamage())}>
                     <img src={swordImg} alt="attack" />

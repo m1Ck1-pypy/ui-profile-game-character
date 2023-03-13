@@ -3,7 +3,16 @@ import { FiMinus, FiPlus } from 'react-icons/fi';
 
 import styles from './Params.module.css';
 
-const ParamsCard = ({ title, params, characteristic, incrementParams, decrementParams, additional }) => {
+// Коапонент для отображения карточки параметров (базовых и дополнительных)
+/* 
+    title - название параметра
+    params - массив с ключем, название, иконкой базовых или дополнительных параметров
+    characteristic - объект с базовыми параметрами и их значениями из state
+    additional - объект с дополнительными параметрами и их значениями из state
+    incrementParams - функция для увеличения базового парметра на 1
+    decrementParams - функция для уменьшения базового парметра на 1
+*/
+const ParamsCard = ({ title, params, characteristic, additional, incrementParams, decrementParams }) => {
     return (
         <div className={styles.card__container}>
             <p className={styles.card__title}>{title}</p>

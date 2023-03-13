@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import { Features, Home, Layout } from "./pages";
 
 const App = () => {
-
     return (
         <div className="App">
             <Routes>

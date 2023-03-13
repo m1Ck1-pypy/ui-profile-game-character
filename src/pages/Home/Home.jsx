@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import styles from './Home.module.css';
 import background from '../../assets/video/background.mp4';
@@ -8,8 +7,10 @@ import background from '../../assets/video/background.mp4';
 const Home = () => {
     const navigate = useNavigate();
 
+    // Счетчик обратного отсчета
     const [counter, setCounter] = useState(10);
 
+    // хук таймера и перехода на страницу с характеристиками
     useEffect(() => {
         if (counter > 0) {
             setTimeout(() => setCounter(counter - 1), 1000);

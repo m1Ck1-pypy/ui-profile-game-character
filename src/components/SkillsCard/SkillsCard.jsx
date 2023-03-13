@@ -6,6 +6,8 @@ import { levelUpSkill } from '../../redux/state';
 import { basicParams, levelOptions } from '../../utils/data';
 import styles from './SkillsCard.module.css';
 
+
+// Функция для отображения степени уровня и его цвет для равной визуализации
 const titleLevel = (level, color = 0) => {
     const levelObj = levelOptions.find((item) => item.level === level)
     if (color) {
@@ -15,16 +17,22 @@ const titleLevel = (level, color = 0) => {
     }
 }
 
+// Компонент для отображения всех скиллов персонажа
+/* 
+    skills - массив скиллов получаемых из state
+    characteristic - объект с базовыми параметрами и их значениями
+*/
 const SkillsCard = ({ skills, characteristic }) => {
     const dispatch = useDispatch();
 
+    // для выбора пункта меню по базовому параметру
     const [selectSkill, setSelectSkill] = useState(basicParams[0].key);
 
+    // Функция для отправки данных увеличения уровня в store - reducer
+    // В dispatch отправляется базовый параметр и название скилла (["power", "Атака"])
     const handleLevelUp = (skills, title) => {
         return () => dispatch(levelUpSkill([skills, title]));
     }
-
-    // console.log(`🚀 characteristic[${selectSkill}]:`, characteristic[selectSkill])
 
     return (
         <div className={styles.skills__container}>
@@ -41,6 +49,7 @@ const SkillsCard = ({ skills, characteristic }) => {
             </div>
 
             <div className={styles.skills__list}>
+                {/* Проход по массиву скиллов и вывод только тех, которые соответствуют базовому параметру меню */}
                 {selectSkill && skills.map((item, index) => item.key === selectSkill && (
                     <div key={index} className={styles.skills__item}>
                         <div className={styles.item__title}>
@@ -51,6 +60,7 @@ const SkillsCard = ({ skills, characteristic }) => {
                                 <span style={{ color: titleLevel(item.level, 1) }}>{titleLevel(item.level)}</span>
                             </div>
                             <div className={styles.item__arrowUp} onClick={handleLevelUp(selectSkill, item.title)}>
+                                {/* Условия, при котором стрелка увеличения уровня отображается для пользователя */}
                                 {
                                     ((characteristic[selectSkill] === item.level) || (item.level >= 5)) ? (
                                         null
@@ -66,6 +76,5 @@ const SkillsCard = ({ skills, characteristic }) => {
         </div >
     )
 }
-
 
 export default SkillsCard;

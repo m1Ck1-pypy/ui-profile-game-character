@@ -4,6 +4,7 @@ import styles from './CharacterInvebtary.module.css';
 import { inventoryItems } from '../../utils/data';
 import character from '../../assets/images/character_v2.png';
 
+// Компонент отрисовки инвентаря персонажа
 const CharacterInvebtary = () => {
     return (
         <div className={styles.features__left_character}>
