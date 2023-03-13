@@ -1,13 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdDownload, MdUpload } from 'react-icons/md';
 import { saveAs } from 'file-saver';
 
 import styles from './ExportData.module.css';
+import { rename } from '../../redux/state';
 
 const ExportData = () => {
+    const dispatch = useDispatch();
+
     const basicData = useSelector((state) => state.global);
     const additionalData = useSelector((state) => state.global.additionalCharacters());
+
+
+    const [dataFile, setDataFile] = useState('');
+    const [error, setError] = useState('');
 
     const fullParamsData = {
         ...basicData,
@@ -25,10 +32,26 @@ const ExportData = () => {
         e.preventDefault()
         downloadFile({
             data: dataJSON,
-            fileName: 'users.json',
+            fileName: 'dataCharacter.json',
             fileType: 'text/json',
         })
     }
+
+    const readFileOnUpload = (uploadedFile) => {
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            try {
+                setDataFile(JSON.parse(fileReader.result));
+                setError('Not Error')
+            } catch (error) {
+                setError('**Not valid JSON file!**')
+            }
+        }
+        if (uploadedFile !== undefined) {
+            fileReader.readAsText(uploadedFile)
+        }
+    }
+
 
     return (
         <div className={styles.export__container} title="Скачать данные персонажа">
@@ -36,10 +59,13 @@ const ExportData = () => {
                 <MdDownload className={styles.export__icon} />
                 <p className={styles.export__text}>Скачать</p>
             </div>
-            <div className={styles.export__btn} title="Загрузить данные персонажа">
-                <MdUpload className={styles.export__icon} />
-                <p className={styles.export__text}>Загрузить</p>
-            </div>
+            <label htmlFor="upload">
+                <div className={styles.export__btn} title="Загрузить данные персонажа">
+                    <MdUpload className={styles.export__icon} />
+                    <p className={styles.export__text}>Загрузить</p>
+                    <input type="file" name="uploadFile" id="upload" onChange={(e) => readFileOnUpload(e.target.files[0])} />
+                </div>
+            </label>
         </div>
     )
 }

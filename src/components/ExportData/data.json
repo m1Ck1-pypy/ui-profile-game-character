@@ -1,0 +1,10 @@
+{
+    "name": "Ciri12345",
+    "level": 10,
+    "basicCharacteristics": {
+        "power": 10,
+        "agility": 20,
+        "intelligence": 30,
+        "charisma": 40
+    }
+}

@@ -16,6 +16,7 @@
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
+    overflow: hidden;
 }
 
 .export__btn:hover {
@@ -37,6 +38,20 @@
 
 .export__btn:hover p {
     display: block;
+    transition: all 1.5s ease-in-out;
+}
+
+.export__btn label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.export__btn input[type="file"] {
+    width: 0;
+    height: 0;
+    display: none;
 }
 
 @media (max-width: 580px) {
