@@ -65,19 +65,19 @@ export const globalSlice = createSlice({
     name: "global",
     initialState,
     reducers: {
-        rename: (state, key) => {
-            state.name = key.payload;
+        rename: (state, action) => {
+            state.name = action.payload;
         },
-        incrementParams: (state, key) => {
-            if (state.basicCharacteristics[key.payload] < 99) {
-                state.basicCharacteristics[key.payload] += 1;
+        incrementParams: (state, action) => {
+            if (state.basicCharacteristics[action.payload] < 99) {
+                state.basicCharacteristics[action.payload] += 1;
             }
         },
-        decrementParams: (state, key) => {
-            if (state.basicCharacteristics[key.payload] === 0) {
-                state.basicCharacteristics[key.payload];
+        decrementParams: (state, action) => {
+            if (state.basicCharacteristics[action.payload] === 0) {
+                state.basicCharacteristics[action.payload];
             } else {
-                state.basicCharacteristics[key.payload] -= 1;
+                state.basicCharacteristics[action.payload] -= 1;
             }
         },
         takeDamage: (state) => {
@@ -87,16 +87,16 @@ export const globalSlice = createSlice({
             if (state.additionalCharacters().lifeforce <= 0) {
             }
         },
-        levelUpSkill: (state, key) => {
+        levelUpSkill: (state, action) => {
             // key.payload - ["power", "Атака"]
             // item - объект из массива всех скиллов
             // Производим поис нужного скилла в массиве по заданному условию
             const skill = state.skillsCharacter.find(
-                (item) => item.key === key.payload[0] && item.title === key.payload[1]
+                (item) => item.key === action.payload[0] && item.title === action.payload[1]
             );
 
             // При выполнении условия, что базовый параметр строго больше уровня скилла, то увеличиваем уровень скилла
-            if (state.basicCharacteristics[key.payload[0]] > skill.level) {
+            if (state.basicCharacteristics[action.payload[0]] > skill.level) {
                 skill.level += 1;
             }
         },

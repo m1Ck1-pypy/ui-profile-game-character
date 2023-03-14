@@ -15,6 +15,7 @@ const ExportData = () => {
 
     const [dataFile, setDataFile] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const fullParamsData = {
         ...basicData,
@@ -44,7 +45,7 @@ const ExportData = () => {
                 setDataFile(JSON.parse(fileReader.result));
                 setError('Not Error')
             } catch (error) {
-                setError('**Not valid JSON file!**')
+                setError('Not valid JSON file!')
             }
         }
         if (uploadedFile !== undefined) {
@@ -52,18 +53,19 @@ const ExportData = () => {
         }
     }
 
+    // console.log(dataFile);
 
     return (
         <div className={styles.export__container} title="Скачать данные персонажа">
             <div className={styles.export__btn} onClick={exportToJson}>
                 <MdDownload className={styles.export__icon} />
-                <p className={styles.export__text}>Скачать</p>
+                <p className={styles.export__text}>Сохранить</p>
             </div>
             <label htmlFor="upload">
                 <div className={styles.export__btn} title="Загрузить данные персонажа">
                     <MdUpload className={styles.export__icon} />
                     <p className={styles.export__text}>Загрузить</p>
-                    <input type="file" name="uploadFile" id="upload" onChange={(e) => readFileOnUpload(e.target.files[0])} />
+                    <input type="file" name="uploadFile" id="upload" accept='.json' onChange={(e) => readFileOnUpload(e.target.files[0])} />
                 </div>
             </label>
         </div>
